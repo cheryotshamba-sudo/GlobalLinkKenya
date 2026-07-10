@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GlobalLink Kenya - Payment</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -35,8 +37,8 @@ margin-bottom:10px;
 
 p{
 text-align:center;
-margin-bottom:20px;
 color:#555;
+margin-bottom:20px;
 }
 
 .price{
@@ -49,8 +51,8 @@ margin-bottom:20px;
 
 label{
 display:block;
-margin-bottom:8px;
 font-weight:bold;
+margin-bottom:8px;
 }
 
 input{
@@ -83,19 +85,72 @@ margin-top:20px;
 text-align:center;
 font-weight:bold;
 }
+
 </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h1>GlobalLink Kenya</h1>
+
+<p>Account Activation Fee</p>
+
+<div class="price">
+KSh 100
+</div>
+
+
+<label>M-PESA Phone Number</label>
+
+<input 
+type="tel" 
+id="phone"
+placeholder="2547XXXXXXXX">
+
+
+<button onclick="payNow()">
+Pay with M-PESA
+</button>
+
+
+<div id="status"></div>
+
+
+</div>
+
+
+
+<script>
+
 async function payNow(){
 
-const phone=document.getElementById("phone").value;
-const status=document.getElementById("status");
+const phone = document.getElementById("phone").value;
+const status = document.getElementById("status");
+
+
+if(!phone){
+
+status.innerHTML="❌ Enter phone number";
+
+return;
+
+}
+
 
 status.innerHTML="Sending STK Push...";
 
+
 try{
+
 
 const response = await fetch(
 "https://globallink-backend.onrender.com/stk-push",
 {
+
 method:"POST",
 
 headers:{
@@ -103,37 +158,58 @@ headers:{
 },
 
 body:JSON.stringify({
+
 phone:phone,
+
 amount:100
+
 })
 
-}
-);
+});
 
-const data=await response.json();
+
+const data = await response.json();
+
 
 console.log(data);
 
+
+
 if(data.success){
 
-status.innerHTML="✅ STK Push sent. Check your phone and enter PIN.";
+
+status.innerHTML=
+"✅ STK Push sent. Check your phone and enter M-PESA PIN.";
+
 
 }else{
 
-status.innerHTML="❌ "+(data.message || "Payment failed");
+
+status.innerHTML=
+"❌ "+(data.message || "Payment failed");
+
 
 }
+
+
 
 }catch(error){
 
+
 console.log(error);
 
-status.innerHTML="❌ Unable to connect to server.";
+
+status.innerHTML=
+"❌ Server connection failed";
+
 
 }
 
+
 }
+
+</script>
+
 
 </body>
 </html>
-
