@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GlobalLink Kenya - Payment</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0b6b0b;
+padding:20px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:12px;
+}
+
+h1{
+text-align:center;
+color:#1565c0;
+margin-bottom:10px;
+}
+
+p{
+text-align:center;
+margin-bottom:20px;
+color:#555;
+}
+
+.price{
+font-size:30px;
+font-weight:bold;
+color:#0b6b0b;
+text-align:center;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+margin-bottom:20px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:8px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#0d47a1;
+}
+
+#status{
+margin-top:20px;
+text-align:center;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>GlobalLink Kenya</h1>
+
+<p>Account Activation Fee</p>
+
+<div class="price">KSh 100</div>
+
+<label>M-PESA Phone Number</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="2547XXXXXXXX"
+required>
+
+<button onclick="payNow()">
+Pay with M-PESA
+</button>
+
+<div id="status"></div>
+
+</div>
+
+<script>
+
+async function payNow(){
+
+const phone=document.getElementById("phone").value;
+const status=document.getElementById("status");
+
+status.innerHTML="Sending STK Push...";
+
+try{
+
+const response=await fetch("https://globallink-backend-2.onrender.com/stkpush",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+phone:phone
+})
+
+});
+
+const data=await response.json();
+
+if(response.ok){
+
+status.innerHTML="✅ STK Push sent. Check your phone.";
+
+setTimeout(function(){
+
+window.location.href="success.html";
+
+},3000);
+
+}else{
+
+status.innerHTML="❌ "+(data.message || "Payment failed");
+
+}
+
+}catch(error){
+
+status.innerHTML="❌ Unable to connect to server.";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
