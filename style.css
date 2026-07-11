@@ -47,8 +47,7 @@ h2{
 
 label{
     display:block;
-    margin-top:15px;
-    margin-bottom:6px;
+    margin-bottom:10px;
     font-weight:bold;
     color:#333;
 }
@@ -76,8 +75,8 @@ select:focus{
 }
 
 .phone-box span{
-    padding:14px;
     background:#f2f2f2;
+    padding:14px;
     font-weight:bold;
 }
 
@@ -85,11 +84,11 @@ select:focus{
     border:none;
 }
 
-/* Interests */
+/* INTERESTS */
 
 .interests{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
     gap:15px;
     margin-top:20px;
 }
@@ -97,17 +96,6 @@ select:focus{
 .interest{
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-    text-align:center;
-    background:#f8f9fa;
-    border:2px solid #ddd;
-    border-radius:15px;
-    padding:20px;
-    min-height:140px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.interest:hover{
-    border-color
+    align-items:center;
+    text
