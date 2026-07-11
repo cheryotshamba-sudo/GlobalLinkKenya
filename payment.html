@@ -98,6 +98,7 @@ font-weight:bold;
 KSh 100
 </div>
 
+
 <label>M-PESA Phone Number</label>
 
 <input 
@@ -113,6 +114,7 @@ Pay with M-PESA
 
 <div id="status"></div>
 
+
 </div>
 
 
@@ -127,6 +129,7 @@ let status = document.getElementById("status");
 if(phone === ""){
 
 status.innerHTML="❌ Enter phone number";
+
 return;
 
 }
@@ -143,20 +146,19 @@ phone = "254" + phone.substring(1);
 
 // Remove spaces
 
-phone = phone.replace(/\s/g,'');
+phone = phone.replace(/\s/g,"");
 
 
-if(!phone.startsWith("254") || phone.length !== 12){
+if(!phone.startsWith("254")){
 
-status.innerHTML="❌ Enter a valid M-PESA number";
+status.innerHTML="❌ Use a valid M-PESA number";
+
 return;
 
 }
 
 
-// Show number being sent
-
-status.innerHTML="Sending STK Push to: " + phone;
+status.innerHTML="⏳ Sending STK Push...";
 
 
 try{
@@ -190,12 +192,12 @@ console.log(data);
 
 if(data.success === true){
 
-status.innerHTML=
-"✅ STK Push sent. Check your phone and enter M-PESA PIN.";
+status.innerHTML =
+"✅ STK Push sent. Enter your M-PESA PIN.";
 
 }else{
 
-status.innerHTML=
+status.innerHTML =
 "❌ " + (data.message || "Payment failed");
 
 }
@@ -205,8 +207,8 @@ status.innerHTML=
 
 console.log(error);
 
-status.innerHTML=
-"❌ Failed to connect to server";
+status.innerHTML =
+"❌ Failed to send STK Push.";
 
 }
 
