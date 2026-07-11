@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>GlobalLink Kenya</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -16,7 +14,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#0b6b0b;
+background:linear-gradient(135deg,#0d47a1,#2e7d32);
 padding:20px;
 }
 
@@ -24,61 +22,97 @@ padding:20px;
 max-width:500px;
 margin:auto;
 background:#fff;
-padding:20px;
-border-radius:12px;
+border-radius:18px;
+padding:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.logo{
+font-size:60px;
+text-align:center;
 }
 
 h1{
 text-align:center;
 color:#1565c0;
-margin-bottom:10px;
+margin-top:10px;
 }
 
 .subtitle{
 text-align:center;
 color:#555;
-margin-bottom:20px;
-font-size:15px;
+margin:10px 0 25px;
+line-height:1.5;
 }
 
 label{
 display:block;
 margin-top:15px;
-margin-bottom:5px;
+margin-bottom:6px;
 font-weight:bold;
+color:#333;
 }
 
 input,select{
 width:100%;
-padding:12px;
+padding:13px;
 border:1px solid #ccc;
-border-radius:8px;
-font-size:15px;
+border-radius:10px;
+font-size:16px;
 }
 
-.interest{
+input:focus,
+select:focus{
+outline:none;
+border-color:#1565c0;
+}
+
+h3{
+margin-top:25px;
+margin-bottom:15px;
+color:#1565c0;
+text-align:center;
+}
+
+.interests{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:10px;
+gap:12px;
 }
 
-.interest label{
-background:#f2f2f2;
-padding:10px;
-border-radius:8px;
+.card{
+border:2px solid #e5e5e5;
+border-radius:12px;
+padding:12px;
+text-align:center;
 cursor:pointer;
-font-weight:normal;
+transition:.3s;
+background:#fafafa;
+}
+
+.card:hover{
+border-color:#1565c0;
+transform:translateY(-2px);
+}
+
+.card input{
+margin-bottom:8px;
+}
+
+.icon{
+font-size:28px;
+display:block;
+margin-bottom:8px;
 }
 
 button{
 width:100%;
 padding:15px;
-margin-top:25px;
+margin-top:30px;
 background:#1565c0;
 color:white;
 border:none;
-border-radius:8px;
+border-radius:10px;
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
@@ -88,6 +122,11 @@ button:hover{
 background:#0d47a1;
 }
 
+@media(max-width:500px){
+.interests{
+grid-template-columns:1fr;
+}
+}
 </style>
 
 </head>
@@ -96,29 +135,31 @@ background:#0d47a1;
 
 <div class="container">
 
-<h1>🌍 GlobalLink Kenya</h1>
+<div class="logo">🌍</div>
+
+<h1>GlobalLink Kenya</h1>
 
 <p class="subtitle">
-Connect with global friends, remote jobs, language exchange and international opportunities.
+Meet people around the world, discover remote jobs, teach Kiswahili, make international friends and unlock global opportunities.
 </p>
 
-<form onsubmit="event.preventDefault(); goToPayment();">
+<form onsubmit="event.preventDefault(); window.location='payment.html';">
 
 <label>Full Name</label>
 <input type="text" placeholder="Enter your full name" required>
 
 <label>Age</label>
-<input type="number" min="18" placeholder="18" required>
+<input type="number" min="18" required>
 
 <label>Gender</label>
 <select required>
-<option value="">Select</option>
+<option value="">Select Gender</option>
 <option>Male</option>
 <option>Female</option>
 </select>
 
 <label>Country</label>
-<select required>
+<select>
 <option>Kenya</option>
 </select>
 
@@ -128,35 +169,65 @@ Connect with global friends, remote jobs, language exchange and international op
 <label>Phone Number</label>
 <input type="tel" placeholder="+2547XXXXXXXX" required>
 
-<label>Select Your Interests</label>
+<h3>Select Your Interests</h3>
 
-<div class="interest">
+<div class="interests">
 
-<label><input type="checkbox"> 💼 Remote Jobs</label>
+<label class="card">
+<input type="checkbox">
+<span class="icon">💼</span>
+Remote Jobs
+</label>
 
-<label><input type="checkbox"> 💰 Earn Money Online</label>
+<label class="card">
+<input type="checkbox">
+<span class="icon">💰</span>
+Earn Money Online
+</label>
 
-<label><input type="checkbox"> 📚 Teaching Kiswahili</label>
+<label class="card">
+<input type="checkbox">
+<span class="icon">📚</span>
+Teaching Kiswahili
+</label>
 
-<label><input type="checkbox"> 🌍 International Networking</label>
+<label class="card">
+<input type="checkbox">
+<span class="icon">🌍</span>
+International Networking
+</label>
+
+<label class="card">
+<input type="checkbox">
+<span class="icon">✈️</span>
+Going Abroad
+</label>
+
+<label class="card">
+<input type="checkbox">
+<span class="icon">💬</span>
+Chatting With Foreigners
+</label>
+
+<label class="card">
+<input type="checkbox">
+<span class="icon">👨‍💻</span>
+Freelancing
+</label>
+
+<label class="card">
+<input type="checkbox">
+<span class="icon">📈</span>
+Business Opportunities
+</label>
 
 </div>
 
-<button type="submit">Continue</button>
+<button type="submit">Continue →</button>
 
 </form>
 
 </div>
-
-<script>
-
-function goToPayment(){
-
-window.location.href="payment.html";
-
-}
-
-</script>
 
 </body>
 </html>
