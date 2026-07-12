@@ -244,13 +244,16 @@ body{
 
 
 /* OPPORTUNITIES */
-
 .opportunity-card{
     background:white;
     margin:20px;
     padding:20px;
     border-radius:20px;
+}
+
+
 /* ================= FEATURED OPPORTUNITY ================= */
+
 
 .hero-card{
     margin:20px;
