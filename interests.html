@@ -18,7 +18,7 @@
 <p>Select your interests</p>
 </div>
 
-<form action="payment.html">
+<form id="interestForm"> 
 
 <h2>Select Your Interests</h2>
 
@@ -82,5 +82,35 @@
 
 </div>
 
+
+<script>
+
+document.getElementById("interestForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let selectedInterests = [];
+
+document.querySelectorAll('input[name="interest"]:checked')
+.forEach(function(item){
+
+selectedInterests.push(item.value);
+
+});
+
+
+localStorage.setItem(
+"interests",
+JSON.stringify(selectedInterests)
+);
+
+
+window.location.href="payment.html";
+
+});
+
+</script>
+
+
 </body>
-  </html>
+</html>
