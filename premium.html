@@ -162,6 +162,16 @@ if(data.success){
 status.innerHTML=
 "✅ STK Push sent. Enter M-PESA PIN.";
 
+// temporary activation after STK response
+localStorage.setItem("premium","active");
+
+setTimeout(()=>{
+
+window.location.href="premium-success.html";
+
+},3000);
+
+
 }else{
 
 status.innerHTML=
