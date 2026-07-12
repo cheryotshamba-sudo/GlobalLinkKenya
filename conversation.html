@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GlobalLink Conversation</title>
+
+<link rel="stylesheet" href="conversation.css">
+
+</head>
+
+
+<body>
+
+
+<div class="conversation-page">
+
+
+<header class="conversation-header">
+
+<a href="chat.html">←</a>
+
+<div>
+<h2 id="chatName">🌍 Chat</h2>
+<p>Online</p>
+</div>
+
+</header>
+
+
+
+<div class="messages" id="messages">
+
+<div class="message received">
+Hello 👋 Nice to meet you.
+</div>
+
+
+<div class="message sent">
+Hi! I want to learn your language.
+</div>
+
+</div>
+
+
+
+<div class="chat-input">
+
+<input id="messageInput" type="text" placeholder="Type your message">
+
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+
+
+</div>
+
+
+
+<script>
+
+let user = localStorage.getItem("chatUser");
+
+if(user){
+
+document.getElementById("chatName").innerHTML = "🌍 Chat with " + user;
+
+}
+
+
+
+function sendMessage(){
+
+let input = document.getElementById("messageInput");
+
+let text = input.value;
+
+
+if(text.trim() !== ""){
+
+
+let msg = document.createElement("div");
+
+msg.className="message sent";
+
+msg.innerHTML=text;
+
+
+document.getElementById("messages").appendChild(msg);
+
+
+input.value="";
+
+
+}
+
+}
+
+
+</script>
+
+
+</body>
+</html>
