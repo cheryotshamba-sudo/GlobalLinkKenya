@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>I
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -98,7 +98,31 @@ document.getElementById("memberLocation").innerText =
 document.getElementById("memberPhone").innerText =
 localStorage.getItem("phone") || "";
 
-</script>
+
+let interests = JSON.parse(localStorage.getItem("interests")) || [];
+
+let interestBox = document.getElementById("myInterests");
+
+
+if(interests.length > 0){
+
+interests.forEach(function(item){
+
+let div = document.createElement("div");
+
+div.className = "interest";
+
+div.innerHTML = "✅ " + item;
+
+interestBox.appendChild(div);
+
+});
+
+}else{
+
+interestBox.innerHTML = "No interests selected";
+
+}
 
 
 </body>
