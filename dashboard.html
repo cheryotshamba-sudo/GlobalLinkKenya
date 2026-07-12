@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GlobalLink Kenya Dashboard</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,62 +12,97 @@
 
 <div class="container">
 
-    <div class="header">
-        <div class="logo">🌍</div>
-        <h1>GlobalLink Kenya</h1>
-        <p>Member Dashboard</p>
-    </div>
-
-    <div class="card">
-        <h2>Welcome, Member 👋</h2>
-        <p>Your account is active.</p>
-    </div>
-
-    <div class="card">
-        <h3>My Interests</h3>
-
-        <div class="interest">
-            💼 Remote Jobs
-        </div>
-
-        <div class="interest">
-            🌎 Global Friends
-        </div>
-
-        <div class="interest">
-            🗣 Language Exchange
-        </div>
-
-        <div class="interest">
-            🤝 Networking
-        </div>
-
-    </div>
+<div class="header">
+<div class="logo">🌍</div>
+<h1>GlobalLink Kenya</h1>
+<p>Members Dashboard</p>
+</div>
 
 
-    <div class="card">
-        <h3>Community Access</h3>
+<div class="card">
 
-        <p>Join our WhatsApp community to connect with other members.</p>
+<h2>Welcome, <span id="memberName">Member</span> 👋</h2>
 
-        <a href="#" class="btn">
-            Join WhatsApp Group
-        </a>
-    </div>
+<p>
+Your account is active.
+</p>
+
+</div>
 
 
-    <div class="card">
-        <h3>Premium Access</h3>
+<div class="card">
 
-        <p>Unlock special opportunities and private groups.</p>
+<h3>My Profile</h3>
 
-        <button class="btn">
-            View Premium Options
-        </button>
-    </div>
+<p>
+<strong>Age:</strong> <span id="memberAge"></span>
+</p>
+
+<p>
+<strong>Gender:</strong> <span id="memberGender"></span>
+</p>
+
+<p>
+<strong>Location:</strong> <span id="memberLocation"></span>
+</p>
+
+<p>
+<strong>Phone:</strong> <span id="memberPhone"></span>
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>My Interests</h3>
+
+<div class="interest">💼 Remote Jobs</div>
+<div class="interest">🌎 Global Friends</div>
+<div class="interest">🗣 Language Exchange</div>
+<div class="interest">🤝 Networking</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>Community Access</h3>
+
+<p>
+Join other GlobalLink members on WhatsApp.
+</p>
+
+<a href="#" class="btn">
+Join WhatsApp Group
+</a>
+
+</div>
 
 
 </div>
+
+
+<script>
+
+document.getElementById("memberName").innerText =
+localStorage.getItem("fullname") || "Member";
+
+document.getElementById("memberAge").innerText =
+localStorage.getItem("age") || "";
+
+document.getElementById("memberGender").innerText =
+localStorage.getItem("gender") || "";
+
+document.getElementById("memberLocation").innerText =
+(localStorage.getItem("city") || "") + ", " +
+(localStorage.getItem("county") || "");
+
+document.getElementById("memberPhone").innerText =
+localStorage.getItem("phone") || "";
+
+</script>
+
 
 </body>
 </html>
