@@ -293,3 +293,111 @@ body{
     text-decoration:none;
     font-weight:600;
 }
+/* ITEMS */
+
+.item{
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+    font-size:15px;
+}
+
+.item:last-child{
+    border-bottom:none;
+}
+
+
+/* COMMUNITY */
+
+.community-card{
+    margin:20px;
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    color:white;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+}
+
+.community-card h2{
+    font-size:40px;
+    margin:10px 0;
+}
+
+.join-btn{
+    background:white;
+    color:#16a34a;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+
+/* REFERRAL */
+
+.referral-card{
+    margin:20px;
+    background:white;
+    border-radius:20px;
+    padding:20px;
+}
+
+.referral-card input{
+    width:100%;
+    padding:12px;
+    margin:15px 0;
+    border-radius:12px;
+    border:1px solid #ddd;
+}
+
+.copy-btn{
+    width:100%;
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:12px;
+}
+
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:500px;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    padding:12px 0;
+    box-shadow:0 -5px 20px rgba(0,0,0,.1);
+    border-radius:20px 20px 0 0;
+}
+
+.bottom-nav a{
+    text-decoration:none;
+    color:#64748b;
+    font-size:12px;
+    text-align:center;
+}
+
+.bottom-nav a.active{
+    color:#2563eb;
+}
+
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+    .quick-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .welcome h1{
+        font-size:22px;
+    }
+
+}
