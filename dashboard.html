@@ -200,7 +200,17 @@ interestBox.appendChild(div);
 
 interestBox.innerHTML = "No interests selected";
 }
+let memberID = localStorage.getItem("memberID");
 
+if(!memberID){
+
+memberID = "GLK-" + Math.floor(100000 + Math.random()*900000);
+
+localStorage.setItem("memberID", memberID);
+
+}
+
+document.getElementById("memberID").innerText = memberID;
 
 </script>
 
