@@ -18,23 +18,27 @@
 <p>Meet new friends, network globally and discover opportunities.</p>
 </div>
 
-<form action="interests.html">
+
+<form id="registrationForm">
 
 <label for="fullname">Full Name</label>
-<input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+<input type="text" id="fullname" placeholder="Enter your full name" required>
+
 
 <label for="age">Age</label>
-<input type="number" id="age" name="age" placeholder="18 - 99" min="18" max="99" required>
+<input type="number" id="age" placeholder="18 - 99" min="18" max="99" required>
+
 
 <label for="gender">Gender</label>
-<select id="gender" name="gender" required>
+<select id="gender" required>
 <option value="">Select Gender</option>
 <option>Male</option>
 <option>Female</option>
 </select>
 
+
 <label for="county">County</label>
-<select id="county" name="county" required>
+<select id="county" required>
 <option value="">Select County</option>
 <option>Nairobi</option>
 <option>Mombasa</option>
@@ -49,5 +53,44 @@
 <option>Other</option>
 </select>
 
+
 <label for="city">City / Town</label>
-<input type="text" id="city" name="
+<input type="text" id="city" placeholder="Enter your town" required>
+
+
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" placeholder="07XXXXXXXX" required>
+
+
+<button type="submit">
+Continue
+</button>
+
+</form>
+
+</div>
+
+
+<script>
+
+document.getElementById("registrationForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+localStorage.setItem("fullname", document.getElementById("fullname").value);
+localStorage.setItem("age", document.getElementById("age").value);
+localStorage.setItem("gender", document.getElementById("gender").value);
+localStorage.setItem("county", document.getElementById("county").value);
+localStorage.setItem("city", document.getElementById("city").value);
+localStorage.setItem("phone", document.getElementById("phone").value);
+
+
+window.location.href = "interests.html";
+
+});
+
+</script>
+
+
+</body>
+</html>
