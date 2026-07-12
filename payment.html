@@ -128,7 +128,10 @@ let status = document.getElementById("status");
 
 if(phone === ""){
 
-status.innerHTML="❌ Enter phone number";
+status.innerHTML =
+"✅ STK Push sent. Enter your M-PESA PIN.";
+
+checkPaymentStatus(data.checkout_request_id); 
 
 return;
 
