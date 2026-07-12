@@ -9,19 +9,16 @@
 
 <link rel="stylesheet" href="chat.css">
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 
 <body>
 
 <div class="chat-page">
 
+
 <header class="chat-header">
 
-<a href="dashboard.html">
-←
-</a>
+<a href="dashboard.html">←</a>
 
 <div>
 <h2>🌍 Global Chat</h2>
@@ -38,13 +35,13 @@
 </section>
 
 
+
 <section class="members">
+
 
 <div class="member-card">
 
-<div class="photo">
-👩
-</div>
+<div class="photo">👩</div>
 
 <div>
 <h3>Sarah</h3>
@@ -54,7 +51,7 @@
 
 <button onclick="openChat('Sarah')">
 Chat
-</button> 
+</button>
 
 </div>
 
@@ -62,9 +59,7 @@ Chat
 
 <div class="member-card">
 
-<div class="photo">
-👨
-</div>
+<div class="photo">👨</div>
 
 <div>
 <h3>John</h3>
@@ -72,29 +67,17 @@ Chat
 <p>Learning African languages</p>
 </div>
 
-...
-
-</nav>  <script>  
-  
-function openChat(name){  
-  
-    localStorage.setItem("chatUser", name);  
-  
-    window.location.href="conversation.html";  
-  
-}  
-  
-</script>  </body>  
-</html>. What will I do with this  
+<button onclick="openChat('John')">
+Chat
+</button>
 
 </div>
+
 
 
 <div class="member-card">
 
-<div class="photo">
-👩
-</div>
+<div class="photo">👩</div>
 
 <div>
 <h3>Maria</h3>
@@ -102,25 +85,15 @@ function openChat(name){
 <p>Language exchange</p>
 </div>
 
-...
-
-</nav>  <script>  
-  
-function openChat(name){  
-  
-    localStorage.setItem("chatUser", name);  
-  
-    window.location.href="conversation.html";  
-  
-}  
-  
-</script>  </body>  
-</html>. What will I do with this 
+<button onclick="openChat('Maria')">
+Chat
+</button>
 
 </div>
 
 
 </section>
+
 
 
 <nav class="bottom-nav">
@@ -130,25 +103,32 @@ function openChat(name){
 <span>Home</span>
 </a>
 
+
 <a class="active">
 💬
 <span>Chat</span>
 </a>
+
 
 <a href="community.html">
 👥
 <span>Community</span>
 </a>
 
+
 <a href="wallet.html">
 💰
 <span>Wallet</span>
 </a>
 
+
 </nav>
 
 
 </div>
+
+
+
 <script>
 
 function openChat(name){
@@ -160,5 +140,7 @@ window.location.href="conversation.html";
 }
 
 </script>
+
+
 </body>
 </html>
