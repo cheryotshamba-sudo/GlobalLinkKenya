@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GlobalLink Kenya Activation</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+
+<div class="card" style="text-align:center;">
+
+
+<div style="font-size:60px;">
+🎉
+</div>
+
+
+<h2>
+Congratulations!
+</h2>
+
+
+<p>
+Your GlobalLink Kenya membership has been activated successfully.
+</p>
+
+
+<br>
+
+
+<span class="badge">
+✅ Active Member
+</span>
+
+
+<br><br>
+
+
+<p>
+Your Membership ID:
+</p>
+
+
+<h3 id="memberID"></h3>
+
+
+<p>
+Welcome to the GlobalLink community 🌍
+</p>
+
+
+
+<a href="dashboard.html" class="btn">
+Go To Members Dashboard
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<script>
+
+
+let id = localStorage.getItem("memberID");
+
+
+if(!id){
+
+id = "GLK-" + Math.floor(100000 + Math.random()*900000);
+
+localStorage.setItem("memberID", id);
+
+}
+
+
+
+document.getElementById("memberID").innerText = id;
+
+
+
+localStorage.setItem(
+"membershipStatus",
+"Active"
+);
+
+
+
+</script>
+
+
+</body>
+
+</html>
