@@ -250,3 +250,45 @@ body{
     margin:20px;
     padding:20px;
     border-radius:20px;
+/* ================= FEATURED OPPORTUNITY ================= */
+
+.hero-card{
+    margin:20px;
+    background:linear-gradient(135deg,#2563eb,#00c6ff);
+    color:white;
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(37,99,235,.25);
+}
+
+.hero-badge{
+    display:inline-block;
+    background:white;
+    color:#2563eb;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.hero-card h2{
+    margin-top:15px;
+    font-size:24px;
+}
+
+.hero-card p{
+    margin-top:10px;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.hero-btn{
+    display:inline-block;
+    margin-top:18px;
+    background:white;
+    color:#2563eb;
+    padding:12px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+}
