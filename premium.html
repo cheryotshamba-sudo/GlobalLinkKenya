@@ -188,7 +188,67 @@ status.innerHTML=
 
 
 }
+async function checkPremiumPayment(checkoutId){
 
+const status=document.getElementById("status");
+
+const timer=setInterval(async()=>{
+
+try{
+
+const response=await fetch(
+`https://globallink-backend.onrender.com/status?checkout_request_id=${checkoutId}`
+);
+
+const data=await response.json();
+
+console.log(data);
+
+
+if(data.status==="completed"){
+
+clearInterval(timer);
+
+localStorage.setItem("premium","active");
+
+status.innerHTML =
+"✅ Premium activated! Redirecting...";
+
+
+setTimeout(()=>{
+
+window.location.href="premium-success.html";
+
+},2000);
+
+
+}
+
+else if(data.status==="failed"){
+
+clearInterval(timer);
+
+status.innerHTML="❌ Payment failed.";
+
+}
+
+else{
+
+status.innerHTML =
+"⏳ Waiting for payment confirmation...";
+
+}
+
+
+}catch(error){
+
+console.log(error);
+
+}
+
+},3000);
+
+}
 
 </script>
 
