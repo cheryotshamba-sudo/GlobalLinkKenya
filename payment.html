@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>GlobalLink Kenya - Payment</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -24,7 +21,7 @@ padding:20px;
 .container{
 max-width:500px;
 margin:auto;
-background:white;
+background:#fff;
 padding:25px;
 border-radius:12px;
 }
@@ -68,7 +65,7 @@ button{
 width:100%;
 padding:15px;
 background:#1565c0;
-color:white;
+color:#fff;
 border:none;
 border-radius:8px;
 font-size:18px;
@@ -81,9 +78,7 @@ margin-top:20px;
 text-align:center;
 font-weight:bold;
 }
-
 </style>
-
 </head>
 
 <body>
@@ -94,132 +89,160 @@ font-weight:bold;
 
 <p>Account Activation Fee</p>
 
-<div class="price">
-KSh 100
-</div>
-
+<div class="price">KSh 100</div>
 
 <label>M-PESA Phone Number</label>
 
-<input 
+<input
 type="tel"
 id="phone"
 placeholder="07XXXXXXXX">
-
 
 <button onclick="payNow()">
 Pay with M-PESA
 </button>
 
-
 <div id="status"></div>
 
-
 </div>
-
 
 <script>
 
 async function payNow(){
 
+const status = document.getElementById("status");
 let phone = document.getElementById("phone").value.trim();
-let status = document.getElementById("status");
 
-
-if(phone === ""){
-
-status.innerHTML =
-"✅ STK Push sent. Enter your M-PESA PIN.";
-
-checkPaymentStatus(data.checkout_request_id); 
-
+if(phone===""){
+status.innerHTML="❌ Enter phone number";
 return;
-
 }
 
-
-// Convert 07XXXXXXXX to 2547XXXXXXXX
+phone=phone.replace(/\s/g,"");
 
 if(phone.startsWith("0")){
-
-phone = "254" + phone.substring(1);
-
+phone="254"+phone.substring(1);
 }
 
-
-// Remove spaces
-
-phone = phone.replace(/\s/g,"");
-
+if(phone.length===9 && phone.startsWith("7")){
+phone="254"+phone;
+}
 
 if(!phone.startsWith("254")){
-
-status.innerHTML="❌ Use a valid M-PESA number";
-
+status.innerHTML="❌ Invalid phone number";
 return;
-
 }
-
 
 status.innerHTML="⏳ Sending STK Push...";
 
-
 try{
 
-
-const response = await fetch(
+const response=await fetch(
 "https://globallink-backend.onrender.com/stkpush",
 {
-
 method:"POST",
-
 headers:{
 "Content-Type":"application/json"
 },
-
 body:JSON.stringify({
-
 phone:phone,
 amount:100
-
 })
-
 });
 
-
-const data = await response.json();
-
+const data=await response.json();
 
 console.log(data);
 
+if(data.success){
 
-if(data.success === true){
+status.innerHTML="✅ STK Push sent. Enter your M-PESA PIN.";
 
-status.innerHTML =
-"✅ STK Push sent. Enter your M-PESA PIN.";
+if(data.status==="completed"){
+status.innerHTML="✅ Payment successful!";
+setTimeout(()=>{
+window.location.href="success.html";
+},1500);
+return;
+}
+
+if(data.checkout_request_id){
+checkPaymentStatus(data.checkout_request_id);
+}
 
 }else{
 
-status.innerHTML =
-"❌ " + (data.message || "Payment failed");
+status.innerHTML="❌ "+(data.message || "Failed");
 
 }
 
+}catch(err){
 
-}catch(error){
-
-console.log(error);
-
-status.innerHTML =
-"❌ Failed to send STK Push.";
+console.log(err);
+status.innerHTML="❌ Network error.";
 
 }
 
+}
+
+async function checkPaymentStatus(checkoutId){
+
+const status=document.getElementById("status");
+
+const timer=setInterval(async()=>{
+
+try{
+
+const response=await fetch(
+`https://globallink-backend.onrender.com/status?checkout_request_id=${checkoutId}`
+);
+
+const data=await response.json();
+
+console.log(data);
+
+if(data.status==="completed"){
+
+clearInterval(timer);
+
+status.innerHTML="✅ Payment successful! Redirecting...";
+
+setTimeout(()=>{
+window.location.href="success.html";
+},2000);
+
+}
+else if(data.status==="failed"){
+
+clearInterval(timer);
+
+status.innerHTML="❌ Payment failed.";
+
+}
+else if(data.status==="cancelled"){
+
+clearInterval(timer);
+
+status.innerHTML="❌ Payment cancelled.";
+
+}
+else{
+
+status.innerHTML="⏳ Waiting for payment confirmation...";
+
+}
+
+}catch(err){
+
+console.log(err);
+
+}
+
+},3000);
 
 }
 
 </script>
-
 
 </body>
 </html>
