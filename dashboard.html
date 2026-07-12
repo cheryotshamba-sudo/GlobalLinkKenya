@@ -212,7 +212,38 @@ localStorage.setItem("memberID", memberID);
 }
 
 document.getElementById("memberID").innerText = memberID;
+const premium = localStorage.getItem("premium");
 
+const learningHub = document.getElementById("learningHub");
+const remoteJobs = document.getElementById("remoteJobs");
+const businessNetwork = document.getElementById("businessNetwork");
+
+if (premium === "active") {
+
+    learningHub.innerHTML =
+    "📚<br><strong>Learning Hub</strong><p>Premium Active ✅</p>";
+
+    remoteJobs.innerHTML =
+    "💼<br><strong>Remote Opportunities</strong><p>Premium Active ✅</p>";
+
+    businessNetwork.innerHTML =
+    "🤝<br><strong>Business Network</strong><p>Premium Active ✅</p>";
+
+} else {
+
+    learningHub.onclick = () => {
+        window.location.href = "premium.html";
+    };
+
+    remoteJobs.onclick = () => {
+        window.location.href = "premium.html";
+    };
+
+    businessNetwork.onclick = () => {
+        window.location.href = "premium.html";
+    };
+
+  }
 </script>
 
 
